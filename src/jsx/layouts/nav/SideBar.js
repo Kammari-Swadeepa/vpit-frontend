@@ -13,6 +13,8 @@ import LogoutPage from './Logout';
 /// Image
 //import user from "../../../images/user.jpg";
 import profile from "../../../images/user.jpg";
+import Tenants from "../../pages/admin/tenant/Tenants";
+
 
 
 
@@ -493,7 +495,7 @@ const SideBar = () => {
         </div>
       </PerfectScrollbar>
     </div>
-    <Modal className="modal fade" size="lg" show={postModal} onHide={setPostModal} >
+    <Modal className="modal fade" size="xl" show={postModal} onHide={setPostModal} >
         <div className="" role="document">
           <div className="">
             <form >
@@ -506,7 +508,7 @@ const SideBar = () => {
                 {
                   modaltype === 1 ? (
                     <Suspense fallback={<div>Loading</div>}>
-                      <AboutSlider /> </Suspense>
+                      <Tenants /> </Suspense>
                   ) : modaltype === 2 ? (
                     <Suspense fallback={<div>Loading</div>}>
                       <Article /> </Suspense>

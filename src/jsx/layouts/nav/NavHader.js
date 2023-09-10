@@ -21,8 +21,8 @@ const NavHader = () => {
 					</defs>
 				</svg>
 				<div className="brand-title">
-					<h2 className="">Svasth<span>aa</span></h2>
-					<span className="brand-sub-title">Nutrition Admin</span>					
+					<h2 className="">Visual<span>path</span></h2>
+					<span className="brand-sub-title">Online learning</span>					
 				</div>
 			</Fragment>
         ) : (
@@ -34,8 +34,8 @@ const NavHader = () => {
 					</defs>
 				</svg>
 				<div className="brand-title">
-					<h2 className="">Svasth<span>aa</span></h2>
-					<span className="brand-sub-title">Nutrition Admin</span>					
+					<h2 className="">Visual<span>path</span></h2>
+					<span className="brand-sub-title">Online learning</span>					
 				</div>
 			</Fragment>
         )}
