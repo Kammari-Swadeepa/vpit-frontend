@@ -11,7 +11,8 @@ const Tenants =() =>{
 
    const getTenants =async() =>{
     const tenantdata = await GetAllTenants({});
-    setData(tenantdata.data);
+    console.log(tenantdata,"tenentData")
+    setData(tenantdata.data.docs);
    }
 
     return(

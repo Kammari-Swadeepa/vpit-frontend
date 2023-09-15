@@ -12,13 +12,11 @@ import LogoutPage from './Logout';
 
 /// Image
 //import user from "../../../images/user.jpg";
+
 import profile from "../../../images/user.jpg";
 import Tenants from "../../pages/admin/tenant/Tenants";
-
-
-
-
-
+import AreaBar from "../../pages/admin/Areas/Area"
+import YoutubeVideo from "../../pages/admin/Youtube/Youtube"
 
 const AboutSlider = lazy(() => import('../../pages/admin/AboutSlider'));
 const Article = lazy(() => import('../../pages/admin/Article'));
@@ -258,7 +256,7 @@ const SideBar = () => {
             </Link>
             <ul >
               <li><Link className={`${path === "dashboard" ? "mm-active" : ""}`}
-                to={"#"} onClick={() => openModal(1)}>About Svasthaa</Link></li>
+                to={"#"} onClick={() => openModal(1)}>Tenant</Link></li>
               <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
                 to={"#"} onClick={() => openModal(2)}>Articles</Link></li>
 
@@ -266,10 +264,14 @@ const SideBar = () => {
                 to={"#"} onClick={() => openModal(3)}>FAQ</Link></li>
 
               <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
-                to={"#"} onClick={() => openModal(4)}>Terms & Conditions</Link></li>
+                to={"#"} onClick={() => openModal(4)}>Area</Link></li>
 
               <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
                 to={"#"} onClick={() => openModal(5)}>Privacy Policy</Link></li>
+                <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
+                to={"#"} onClick={() => openModal(7)}>Youtube Videos</Link></li>
+                <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
+                to={"#"} onClick={() => openModal(9)}> Terms & Conditions</Link></li>
 
             </ul>
           </li>
@@ -520,12 +522,20 @@ const SideBar = () => {
                       <Privacy /> </Suspense>
                   ): modaltype === 4 ? (
                     <Suspense fallback={<div>Loading</div>}>
+                      < AreaBar/> </Suspense>
+                  ): modaltype === 7 ? (
+                    <Suspense fallback={<div>Loading</div>}>
+                      <YoutubeVideo /> </Suspense>
+                  )
+                  : modaltype === 9 ? (
+                    <Suspense fallback={<div>Loading</div>}>
                       <Terms /> </Suspense>
                   )
                   : null
 
                 }
               </div>
+              
               {/*<div className="modal-footer">
                               <button type="submit" className="btn btn-primary" >Add</button>  
                               <button type="button" onClick={()=> setPostModal(false)} className="btn btn-danger"> <i className="flaticon-delete-1"></i> Discard</button>      
