@@ -36,14 +36,12 @@ export const GetAllTenants = async (data) => {
         'x-access-token': constuserdetails.token,
      
     }
-    console.log(data);
     return await axios.post(apiurl + "/api/v1/tenant/get",data,{'headers':headers})
         .then((res) => {
-            console.log("getting data",res.data);
             return res.data;
         }).catch((error) => {
             localStorage.removeItem('userDetails');
-            window.location.reload();
+            // window.location.reload();
             return error;
         });
 
@@ -68,7 +66,7 @@ export const SaveTenants = async (data) => {
             return res.data;
         }).catch((error) => {
             localStorage.removeItem('userDetails');
-            // window.location.reload();
+            window.location.reload();
             return error;
         });
 
@@ -92,14 +90,16 @@ export const UpdateTenants = async (data) => {
             return res.data;
         }).catch((error) => {
             localStorage.removeItem('userDetails');
-            console.log("error in updating");
             window.location.reload();
             return error;
         });
 
 
 } 
-export const DeleteTenants = async (data) => {
+
+// SocialLinks
+
+export const GetAllSocialLinks = async () => {
     const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
 	
     const headers = {
@@ -111,106 +111,7 @@ export const DeleteTenants = async (data) => {
        
 
     }
-    return await axios.post(apiurl + "/api/v1/tenant/delete",data,{'headers':headers})
-        .then((res) => {
-            return res.data;
-        }).catch((error) => {
-            localStorage.removeItem('userDetails');
-            console.log("error in deleting");
-            window.location.reload();
-            return error;
-        });
-
-
-} 
-
-
-//Events
-
-export const GetAllEvents = async () => {
-    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
-	
-    const headers = {
-        'content-type': 'application/json',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'x-access-token': constuserdetails.token,
-     
-    }
-    return await axios.post(apiurl + "/api/v1/events/get",{'headers':headers})
-        .then((res) => {
-            console.log("getting data",res.data);
-            return res.data;
-        }).catch((error) => {
-            localStorage.removeItem('userDetails');
-            console.log("error in getting data");
-            window.location.reload();
-            return error;
-        });
-
-} 
-
-
-
-export const SaveEvents = async (ele) => {
-    console.log(ele,"check common fields")
-    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
-	console.log('called')
-    const headers = {
-        'content-type': 'application/json',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'x-access-token': constuserdetails.token,
-        
-       
-
-    }
-    return await axios.post(apiurl + "/api/v1/events/save",ele,{'headers':headers})
-        .then((res) => {
-            console.log(res,'event response')
-            return res.data;
-        }).catch((error) => {
-            localStorage.removeItem('userDetails');
-            window.location.reload();
-            return error;
-        });
-
-
-} 
-export const UpdateEvents = async (ele) => {
-    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
-	
-    const headers = {
-        'content-type': 'application/json',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'x-access-token': constuserdetails.token,
-       
-    }
-    return await axios.post(apiurl + "/api/v1/events/update",ele,{'headers':headers})
-        .then((res) => {
-            return res.data;
-        }).catch((error) => {
-            localStorage.removeItem('userDetails');
-            window.location.reload();
-            return error;
-        });
-
-
-} 
-
-//Latest News
-export const GetAllLatestNews = async () => {
-    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
-	
-    const headers = {
-        'content-type': 'application/json',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'x-access-token': constuserdetails.token,
-       
-    }
-    return await axios.post(apiurl + "/api/v1/news/get",{'headers':headers})
+    return await axios.post(apiurl + "/api/v1/sociallink/get",{'headers':headers})
         .then((res) => {
             return res.data;
         }).catch((error) => {
@@ -221,7 +122,9 @@ export const GetAllLatestNews = async () => {
 
 
 } 
-export const SaveLatestNews = async (data) => {
+
+
+export const SaveSocialLinks = async (data) => {
     const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
 	
     const headers = {
@@ -233,52 +136,9 @@ export const SaveLatestNews = async (data) => {
        
 
     }
-    return await axios.post(apiurl + "/api/v1/news/save",data,{'headers':headers})
+    return await axios.post(apiurl + "/api/v1/sociallink/save",data,{'headers':headers})
         .then((res) => {
-            return res.data;
-        }).catch((error) => {
-            localStorage.removeItem('userDetails');
-            window.location.reload();
-            return error;
-        });
-
-
-} 
-export const UpdateLatestNews = async (data) => {
-    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
-	
-    const headers = {
-        'content-type': 'application/json',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'x-access-token': constuserdetails.token,
-    }
-    return await axios.post(apiurl + "/api/v1/news/update",data,{'headers':headers})
-        .then((res) => {
-            return res.data;
-        }).catch((error) => {
-            localStorage.removeItem('userDetails');
-            window.location.reload();
-            return error;
-        });
-
-
-} 
-
-//Logo
-
-export const GetAllLogos = async () => {
-    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
-	
-    const headers = {
-        'content-type': 'application/json',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'x-access-token': constuserdetails.token,
-       
-    }
-    return await axios.post(apiurl + "/api/v1/logo/get",{'headers':headers})
-        .then((res) => {
+            console.log(res, "social link data");
             return res.data;
         }).catch((error) => {
             localStorage.removeItem('userDetails');
@@ -289,7 +149,7 @@ export const GetAllLogos = async () => {
 
 }
 
-export const SaveLogos = async (data) => {
+export const UpdateSocialLinks = async (data) => {
     const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
 	
     const headers = {
@@ -297,9 +157,11 @@ export const SaveLogos = async (data) => {
         'X-Content-Type-Options': 'nosniff',
         'X-Frame-Options': 'SAMEORIGIN',
         'x-access-token': constuserdetails.token,
+        
        
+
     }
-    return await axios.post(apiurl + "/api/v1/logo/save",data,{'headers':headers})
+    return await axios.post(apiurl + "/api/v1/sociallink/update",data,{'headers':headers})
         .then((res) => {
             return res.data;
         }).catch((error) => {
@@ -308,54 +170,13 @@ export const SaveLogos = async (data) => {
             return error;
         });
 
-
-}
-export const UpdateLogos = async (data) => {
-    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
-	
-    const headers = {
-        'content-type': 'application/json',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'x-access-token': constuserdetails.token,
-       
-    }
-    return await axios.post(apiurl + "/api/v1/logo/update",data,{'headers':headers})
-        .then((res) => {
-            return res.data;
-        }).catch((error) => {
-            localStorage.removeItem('userDetails');
-            window.location.reload();
-            return error;
-        });
-
-
-}
-
-//SliderImages
-export const GetAllSliderImages = async (data) => {
-    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
-	
-    const headers = {
-        'content-type': 'application/json',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'x-access-token': constuserdetails.token,
-     
-    }
-    return await axios.post(apiurl + "/api/v1/sliderimages/get",data,{'headers':headers})
-        .then((res) => {
-            console.log("getting data",res.data);
-            return res.data;
-        }).catch((error) => {
-            localStorage.removeItem('userDetails');
-            console.log("error in getting data");
-            window.location.reload();
-            return error;
-        });
 
 } 
-export const SaveSliderImages = async (data) => {
+
+
+// banners
+
+export const GetAllBanner = async () => {
     const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
 	
     const headers = {
@@ -363,9 +184,61 @@ export const SaveSliderImages = async (data) => {
         'X-Content-Type-Options': 'nosniff',
         'X-Frame-Options': 'SAMEORIGIN',
         'x-access-token': constuserdetails.token,
+        
        
+
     }
-    return await axios.post(apiurl + "/api/v1/sliderimages/save",data,{'headers':headers})
+    return await axios.post(apiurl + "/api/v1/banner/get",{'headers':headers})
+        .then((res) => {
+            return res.data;
+        }).catch((error) => {
+            localStorage.removeItem('userDetails');
+            // window.location.reload();
+            return error;
+        });
+
+
+} 
+
+
+export const SaveBanner = async (data) => {
+    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
+	
+    const headers = {
+        'content-type': 'application/json',
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'SAMEORIGIN',
+        'x-access-token': constuserdetails.token,
+        
+       
+
+    }
+    return await axios.post(apiurl + "/api/v1/banner/save",data,{'headers':headers})
+        .then((res) => {
+            console.log(res, "social link data");
+            return res.data;
+        }).catch((error) => {
+            localStorage.removeItem('userDetails');
+            // window.location.reload();
+            return error;
+        });
+
+
+}
+
+export const UpdateBanner = async (data) => {
+    const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
+	
+    const headers = {
+        'content-type': 'application/json',
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'SAMEORIGIN',
+        'x-access-token': constuserdetails.token,
+        
+       
+
+    }
+    return await axios.post(apiurl + "/api/v1/banner/update",data,{'headers':headers})
         .then((res) => {
             return res.data;
         }).catch((error) => {
@@ -375,8 +248,8 @@ export const SaveSliderImages = async (data) => {
         });
 
 
-}
-export const UpdateSliderImages = async (data) => {
+} 
+export const DeleteBanner = async (data) => {
     const constuserdetails = JSON.parse(localStorage.getItem('userDetails'));
 	
     const headers = {
@@ -384,9 +257,11 @@ export const UpdateSliderImages = async (data) => {
         'X-Content-Type-Options': 'nosniff',
         'X-Frame-Options': 'SAMEORIGIN',
         'x-access-token': constuserdetails.token,
+        
        
+
     }
-    return await axios.post(apiurl + "/api/v1/sliderimages/update",data,{'headers':headers})
+    return await axios.post(apiurl + "/api/v1/banner/delete",data,{'headers':headers})
         .then((res) => {
             return res.data;
         }).catch((error) => {

@@ -4,39 +4,28 @@ import { useTable, useGlobalFilter, useFilters, usePagination } from 'react-tabl
 import { ColumnFilter } from '../../../components/table/FilteringTable/ColumnFilter';
 import { GlobalFilter } from '../../../components/table/FilteringTable/GlobalFilter'; 
 import { Button, Modal } from 'react-bootstrap';
-import AddTenant from './AddTenant';
+import AddBanner from './AddBanner';
+import { DeleteBanner } from '../../../../services/CommonService';
 
-const TenantTable =({propdata}) =>{
+const BannerTable =({propdata}) =>{
     const [postModal, setPostModal] = useState(false);
-    const[tenantdata,setTenantData] =useState(null);
+    const[bannerData,setBannerData] =useState(null);
     const COLUMNS = [
         {
-            Header : 'Tenant Name',
-            Footer : 'Tenant Name',
-            accessor: 'name',
+            Header : 'Bannertype',
+            Footer : 'Bannertype',
+            accessor: 'bannertype',
             Filter: ColumnFilter
             
             //disableFilters: true,
         },
         {
-            Header : 'Domain',
-            Footer : 'Domain',
-            accessor: 'domain',
+            Header : 'Position',
+            Footer : 'Position',
+            accessor: 'position',
             Filter: ColumnFilter,
             
             //disableFilters: true,
-        },
-        {
-            Header : 'Type',
-            Footer : 'Type',
-            accessor: 'type',
-            Filter: ColumnFilter,
-        },
-        {
-            Header : 'Tenant ID',
-            Footer : 'Tenant ID',
-            accessor: 'tenantid',
-            Filter: ColumnFilter,
         },
         {
             Header : 'Status',
@@ -44,16 +33,35 @@ const TenantTable =({propdata}) =>{
             accessor: 'status',
             Filter: ColumnFilter,
         },
-        
-      
+        {
+            Header : 'Base64',
+            Footer : 'Base64',
+            accessor: 'base64',
+            Filter: ColumnFilter,
+        },
+        {
+            Header : 'Tenantid',
+            Footer : 'Tenantid',
+            accessor: 'tenantid',
+            Filter: ColumnFilter,
+        },
         {
             Header: "Actions",
             Cell: ({ row }) => (
+                <>
               <button 
                 onClick={() => handleRowClick(row)}
               >
                 View /Edit
               </button>
+             
+              <button 
+                onClick={() => deleteData(row)}
+              >
+                Delete
+              </button>
+              </>
+              
             )
           }
         
@@ -93,8 +101,13 @@ const TenantTable =({propdata}) =>{
     const handleRowClick =async(row) =>{
         console.log(row);
        // setUserData(row.values);
-        setTenantData(row.values);
+        setBannerData(row.values);
         setPostModal(true);
+        }
+        const deleteData=async(row)=>{
+              
+              
+              
         }
 
     const openModal =async(data) =>{
@@ -111,12 +124,12 @@ const TenantTable =({propdata}) =>{
 				<div className="card-body">
                 <Button onClick={() => openModal({})}
                             className="me-2" variant="primary btn-square"
-                            title="Add Tenant"
+                            title="Add Banners"
                         >
                             <span className="btn-icon-start text-danger">
                                 <i className="fa fa-plus color-danger" />
                             </span>
-                            ADD Tenant
+                            ADD Banners
                         </Button>
 					<div className="table-responsive">
 						<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
@@ -194,7 +207,7 @@ const TenantTable =({propdata}) =>{
                                 <button type="button" className="btn-close" onClick={closemodal} data-dismiss="modal"></button>
                             </div>
                             <div className="modal-body">
-                            <AddTenant dataprops ={tenantdata}/>
+                            <AddBanner dataprops ={bannerData}/>
 
                             </div>
                             {/*<div className="modal-footer">
@@ -210,4 +223,4 @@ const TenantTable =({propdata}) =>{
     </>
     )
 }
-export default TenantTable
+export default BannerTable

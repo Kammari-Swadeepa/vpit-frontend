@@ -12,15 +12,13 @@ const Tenants =() =>{
    const getTenants =async() =>{
     const tenantdata = await GetAllTenants({});
     setData(tenantdata.data.docs);
-
    }
-   
+
     return(
     <>
-   
-    {data.length > 0  &&
+    {data.length > 0 &&
 				<TenantTable propdata={data} />
-			 } 
+			} 
 
     
     </>

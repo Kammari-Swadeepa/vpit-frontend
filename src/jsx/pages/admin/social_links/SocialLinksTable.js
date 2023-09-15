@@ -4,25 +4,17 @@ import { useTable, useGlobalFilter, useFilters, usePagination } from 'react-tabl
 import { ColumnFilter } from '../../../components/table/FilteringTable/ColumnFilter';
 import { GlobalFilter } from '../../../components/table/FilteringTable/GlobalFilter'; 
 import { Button, Modal } from 'react-bootstrap';
-import AddTenant from './AddTenant';
+import AddSocialLinks from './AddSocialLinks';
 
-const TenantTable =({propdata}) =>{
+const SocialLinksTable =({propdata}) =>{
     const [postModal, setPostModal] = useState(false);
-    const[tenantdata,setTenantData] =useState(null);
+    const[socialLinksData,setSocialLinksData] =useState(null);
     const COLUMNS = [
         {
-            Header : 'Tenant Name',
-            Footer : 'Tenant Name',
-            accessor: 'name',
+            Header : 'SocialLinks',
+            Footer : 'SocialLinks',
+            accessor: 'sociallink',
             Filter: ColumnFilter
-            
-            //disableFilters: true,
-        },
-        {
-            Header : 'Domain',
-            Footer : 'Domain',
-            accessor: 'domain',
-            Filter: ColumnFilter,
             
             //disableFilters: true,
         },
@@ -31,12 +23,8 @@ const TenantTable =({propdata}) =>{
             Footer : 'Type',
             accessor: 'type',
             Filter: ColumnFilter,
-        },
-        {
-            Header : 'Tenant ID',
-            Footer : 'Tenant ID',
-            accessor: 'tenantid',
-            Filter: ColumnFilter,
+            
+            //disableFilters: true,
         },
         {
             Header : 'Status',
@@ -44,8 +32,12 @@ const TenantTable =({propdata}) =>{
             accessor: 'status',
             Filter: ColumnFilter,
         },
-        
-      
+        {
+            Header : 'Tenantid',
+            Footer : 'Tenantid',
+            accessor: 'tenantid',
+            Filter: ColumnFilter,
+        },
         {
             Header: "Actions",
             Cell: ({ row }) => (
@@ -93,7 +85,7 @@ const TenantTable =({propdata}) =>{
     const handleRowClick =async(row) =>{
         console.log(row);
        // setUserData(row.values);
-        setTenantData(row.values);
+        setSocialLinksData(row.values);
         setPostModal(true);
         }
 
@@ -111,12 +103,12 @@ const TenantTable =({propdata}) =>{
 				<div className="card-body">
                 <Button onClick={() => openModal({})}
                             className="me-2" variant="primary btn-square"
-                            title="Add Tenant"
+                            title="Add Social Links"
                         >
                             <span className="btn-icon-start text-danger">
                                 <i className="fa fa-plus color-danger" />
                             </span>
-                            ADD Tenant
+                            ADD Social links
                         </Button>
 					<div className="table-responsive">
 						<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
@@ -194,7 +186,7 @@ const TenantTable =({propdata}) =>{
                                 <button type="button" className="btn-close" onClick={closemodal} data-dismiss="modal"></button>
                             </div>
                             <div className="modal-body">
-                            <AddTenant dataprops ={tenantdata}/>
+                            <AddSocialLinks dataprops ={socialLinksData}/>
 
                             </div>
                             {/*<div className="modal-footer">
@@ -210,4 +202,4 @@ const TenantTable =({propdata}) =>{
     </>
     )
 }
-export default TenantTable
+export default SocialLinksTable

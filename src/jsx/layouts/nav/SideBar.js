@@ -14,8 +14,8 @@ import LogoutPage from './Logout';
 //import user from "../../../images/user.jpg";
 import profile from "../../../images/user.jpg";
 import Tenants from "../../pages/admin/tenant/Tenants";
-
-
+import SocialLinks from "../../pages/admin/social_links/SocialLinks";
+import Banner from "../../pages/admin/banner/Banner";
 
 
 
@@ -27,10 +27,6 @@ const Article = lazy(() => import('../../pages/admin/Article'));
 const FAQ = lazy(() => import('../../pages/admin/FAQ'));
 const Privacy = lazy(() => import('../../pages/admin/Privacy'));
 const Terms = lazy(() => import('../../pages/admin/Terms'));
-const Events=lazy(()=>import('../../pages/admin/event/Events') );
-const News=lazy(()=> import('../../pages/admin/news/News'));
-const Logo=lazy(()=>import('../../pages/admin/logo/Logo'));
-const Image=lazy(()=> import ('../../pages/admin/sliderimages/Image'));
 class MM extends Component {
   componentDidMount() {
     this.$el = this.el;
@@ -263,21 +259,13 @@ const SideBar = () => {
               <span className="nav-text">Adminstration</span>
             </Link>
             <ul >
-              <li><Link className={`${path === "dashboard" ? "mm-active" : ""}`}
-                to={"#"} onClick={() => openModal(1)}>Tenant</Link></li>
-              <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
-                to={"#"} onClick={() => openModal(2)}>Articles</Link></li>
 
               <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
-                to={"#"} onClick={() => openModal(3)}>Logo</Link></li>
+                to={"#"} onClick={() => openModal(2)}>Banner</Link></li>
 
-              <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
-                to={"#"} onClick={() => openModal(9)}>Slider Images</Link></li>
+                <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
+                to={"#"} onClick={() => openModal(8)}>Social Link</Link></li>
 
-              <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
-                to={"#"} onClick={() => openModal(5)}>Event</Link></li>
-              <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`}
-                to={"#"} onClick={() => openModal(6)}>Latest News</Link></li>
             </ul>
           </li>
 
@@ -513,25 +501,13 @@ const SideBar = () => {
               <div className="modal-body">
 
                 {
-                  modaltype === 1 ? (
+                  modaltype === 8 ? (
+                        <Suspense fallback={<div>Loading</div>}>
+                          <SocialLinks /> </Suspense>
+                  ): modaltype === 2 ? (
                     <Suspense fallback={<div>Loading</div>}>
-                      <Tenants /> </Suspense>
-                  ) : modaltype === 2 ? (
-                    <Suspense fallback={<div>Loading</div>}>
-                      <Article /> </Suspense>
-                  ): modaltype === 3 ? (
-                    <Suspense fallback={<div>Loading</div>}>
-                      <Logo/> </Suspense>
-                  ): modaltype === 5 ? (
-                    <Suspense fallback={<div>Loading</div>}>
-                      <Events/> </Suspense>
-                  ): modaltype === 9? (
-                    <Suspense fallback={<div>Loading</div>}>
-                      <Image/> </Suspense>
-                  ): modaltype === 6 ? (
-                    <Suspense fallback={<div>Loading</div>}>
-                      <News/> </Suspense>
-                  )
+                      <Banner /> </Suspense>
+              )
                   : null
 
                 }

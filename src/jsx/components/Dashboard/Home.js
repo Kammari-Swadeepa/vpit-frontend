@@ -14,9 +14,9 @@ const Home = () => {
     return(
         <>
 		 <CountReport/>
-        {/* <DoctorDetails/> */}
+        <DoctorDetails/>
        
-        {/* <Patients/> */}
+        <Patients/>
 
       
         </>

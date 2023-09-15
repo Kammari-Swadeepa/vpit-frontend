@@ -46,7 +46,7 @@ function Login (props) {
                         <img src={logoWhite} alt="" className="ms-3"/>
                       </Link>
                     <div className="login-description">
-                        <h2 className="main-title mb-2">Welcome To VisualPath</h2>
+                        <h2 className="main-title mb-2">Welcome To Svasthaa</h2>
                         <p className="">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
                         <ul className="social-icons mt-4">
                             <li><Link to={"#"}><i className="fab fa-facebook-f"></i></Link></li>

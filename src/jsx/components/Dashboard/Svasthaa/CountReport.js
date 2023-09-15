@@ -78,7 +78,7 @@ const CountReport = () => {
                                                 </span>
                                                 <div className="invoices">
                                                     <h4>10</h4>
-                                                    <span>Total Tenants</span>
+                                                    <span>Total Patient</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@ const CountReport = () => {
                                                 </span>
                                                 <div className="invoices">
                                                     <h4>1</h4>
-                                                    <span>Total Courses</span>
+                                                    <span>Counselling Booking</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,7 +127,7 @@ const CountReport = () => {
                                                 </span>
                                                 <div className="invoices">
                                                     <h4>10</h4>
-                                                    <span>Offline Enrollments</span>
+                                                    <span>Consultation Booking</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,7 +153,7 @@ const CountReport = () => {
                                                 </span>
                                                 <div className="invoices">
                                                     <h4>0</h4>
-                                                    <span>Total Users</span>
+                                                    <span>Doctor bookings</span>
                                                 </div>
                                             </div>
                                         </div>

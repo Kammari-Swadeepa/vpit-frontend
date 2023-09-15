@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { SaveTenants, UpdateTenants } from '../../../../services/CommonService';
-import '../../../index.css';
-import {v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 const AddTenant = ({dataprops}) => {
@@ -20,12 +20,12 @@ const AddTenant = ({dataprops}) => {
         status: '',
         domain: '',
         type: '',
-        tenantid:''
+        tenantid: ''
 
     }
     
     const [errorFields, setErrorFields] = useState(errors);
-    const [formfields, setFormFields] = useState(fields);
+    const [formfields, setFromFields] = useState(fields);
 
     useEffect(() => {
         console.log(dataprops);
@@ -34,11 +34,12 @@ const AddTenant = ({dataprops}) => {
 	}, []); 
    
     
+
     const { name, status, domain, type, tenantid } = formfields;
 
     const  setFieldData = async() =>{
         if(dataprops?.id){
-        setFormFields(dataprops);
+        setFromFields(dataprops);
         }
     }
 
@@ -57,11 +58,11 @@ const AddTenant = ({dataprops}) => {
         }
         if (!fields["type"]) {
             formIsValid = false;
-            errors["type"] = "*Please select type. ";
+            errors["type"] = "*Please select type .";
         }
         if (!fields["status"]) {
             formIsValid = false;
-            errors["status"] = "*Please select status either active or inactive.";
+            errors["status"] = "*Please select status .";
         }
         setErrorFields(errors)
         return formIsValid;
@@ -69,13 +70,12 @@ const AddTenant = ({dataprops}) => {
     }
 
     const submitForm = async () => {
-       console.log(formfields);    
+       console.log(formfields);
         const isValid = await validateForm();
         if (isValid) {
             if (!formfields.id) {
                 //save
                 const Response = await SaveTenants(formfields);
-                
 
             } else {
                 //update
@@ -87,7 +87,7 @@ const AddTenant = ({dataprops}) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormFields((prevState) => ({
+        setFromFields((prevState) => ({
           ...prevState,
           [name]: value,
         }))
@@ -95,7 +95,7 @@ const AddTenant = ({dataprops}) => {
 
 
     return (<>
-                            <div className="form-group mb-3 row">
+    <div className="form-group mb-3 row">
                                     <label
                                         className="col-lg-4 col-form-label"
                                         htmlFor="val-username"
@@ -104,7 +104,7 @@ const AddTenant = ({dataprops}) => {
                                     </label>
                                     <div className="col-lg-6">
                                         <input component="input"
-                                            placeholder="enter tenant name"
+                                            placeholder="Display Order"
                                             name="name"
                                             className="form-control"
                                             
@@ -118,56 +118,16 @@ const AddTenant = ({dataprops}) => {
                                         className="col-lg-4 col-form-label"
                                         htmlFor="val-username"
                                     >
-                                        Domain
+                                        Category Name
                                     </label>
                                     <div className="col-lg-6">
                                         <input component="input"
-                                            placeholder="enter domain"
-                                            name="domain"
-                                            className="form-control"
-                                            value={domain} maxLength={50} onChange={handleChange} />
+                                            placeholder="Display Order"
+                                            name="display_id"
+                                            className="form-control" />
 
                                     </div>
-                                    <div className="errorMsg">{errorFields.domain}</div>
                                 </div>
-                                <div className="form-group mb-3 row">
-            <label
-                className="col-lg-4 col-form-label"
-                htmlFor="val-username"
-            >
-                Type
-            </label>
-            <div className="col-lg-6" >
-                    <select component="input"
-                    name="type"
-                    className="form-control"
-                    value={type} onChange={handleChange}> 
-                    <option value="">Select Below</option>                       
-                        <option value="political">Political</option>
-                    <option value="educational">Educational</option></select>
-
-            </div>
-            <div className="errorMsg">{errorFields.type}</div>
-        </div>
-                                <div className="form-group mb-3 row">
-            <label
-                className="col-lg-4 col-form-label"
-                htmlFor="val-username"
-            >
-               Status
-            </label>
-            <div className="col-lg-6" >
-                
-                    <select 
-                    value={status} name='status' onChange={handleChange} className="form-control">
-                      <option value="">Select below</option>
-                      <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                    </select>
-
-            </div>
-            <div className="errorMsg">{errorFields.status}</div>
-        </div>
                                  <br />
                                 <div className="form-group">
                                     <button onClick={submitForm} className="btn btn-primary" type="button"
